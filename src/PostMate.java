@@ -16,14 +16,14 @@ import java.nio.file.StandardCopyOption;
 public class PostMate {
     public static void download(String url) throws IOException {
         InputStream inputStream = new URL(url).openStream();
-        Files.copy(inputStream, Paths.get(new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+"query.xml"), StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(inputStream, Paths.get(new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+"/query.xml"), StandardCopyOption.REPLACE_EXISTING);
     }
     public static void showInformation()
     {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try{
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+"query.xml");
+            Document doc = builder.parse(new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+"/query.xml");
             NodeList notifications = doc.getElementsByTagName("TrackingData");
             if(notifications.getLength()==0)
             {
